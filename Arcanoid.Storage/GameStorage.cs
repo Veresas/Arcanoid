@@ -12,32 +12,38 @@ namespace Arcanoid.Storage
 {
     public class GameStorage : IGameStorage
     {
-        private Block[,] blocks;
-        private Player player;
-        private Ball ball;
+        public Block[,] blocks {  get; private set; }
+        public Player player { get; private set; }
+        public Ball ball { get; private set; }
 
-        GameStorage() 
+
+
+        public GameStorage() 
         {
             player = new Player(Constants.LenghtPlayer, Constants.HeightPlayer,
-                new Vector(Constants.WidowsWidht/2, Constants.HeightPlayer - 10), Constants.SpeedPlyer);
+                new Vector(Constants.WidowsWidht/2 - Constants.LenghtPlayer, Constants.WidowsHeight - 200), Constants.SpeedPlyer);
             ball = new Ball(Constants.SpeedBall, Constants.SizeBall, 
-                new Vector(Constants.WidowsWidht / 2, Constants.HeightPlayer - 100));
+                new Vector(Constants.WidowsWidht / 2, Constants.WidowsHeight - 300));
+
+            CreatBlocks(3, 5);
         }
 
         public void CreatBlocks(int x, int y)
         {
             blocks = new Block[x, y];
-            blocks[0, 0] = new Block(new Vector(0, 0), Constants.LenghtBlocks, Constants.HeightBlocks);
-            var Hight = blocks[0, 0].Position.Y;
+            var posX = Constants.BlockIndentation;
+            var hight = Constants.HeightBlocks;
             for (int i = 0; i < x; i++)
             {
                 for (int j = 0; j < y; j++)
                 {
                     blocks[i, j] = 
-                        new Block(new Vector((blocks[i,j-1].Position.X+Constants.LenghtBlocks), Hight),
+                        new Block(new Vector(posX, hight),
                         Constants.LenghtBlocks, Constants.HeightBlocks);
+                    posX += Constants.LenghtBlocks;
                 }
-                Hight += Constants.HeightBlocks;
+                posX = Constants.BlockIndentation;
+                hight += Constants.HeightBlocks;
             }
         }
 
@@ -51,9 +57,9 @@ namespace Arcanoid.Storage
             player.Position = new Vector( player.Position.X + i, player.Position.Y);
         }
 
-        public void MoveBall(int x, int y)
+        public void MoveBall()
         {
-            ball.Position = new Vector( ball.Position.X + x, ball.Position.Y + y );
+            ball.Position += ball.MoveVector * Constants.SpeedBall;
         }
 
     }

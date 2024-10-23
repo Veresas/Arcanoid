@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace Arcanoid.Storage.Models
 {
-    internal class Block : Entites
+    public class Block : Entites
     {
         public int Lenght { get; protected set; }
         public int Height { get; protected set; }

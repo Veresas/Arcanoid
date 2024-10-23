@@ -10,7 +10,7 @@ using Arcanoid.Contrats.Models;
 
 namespace Arcanoid.Storage.Models
 {
-    internal class Player : Entites
+    public class Player : Entites
     {
         public Direction HorizontalDirection { get; set; } = Direction.InPlace;
         public int Speed { get; private set; }

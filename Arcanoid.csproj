@@ -79,5 +79,19 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Arcanoid.Contrats\Arcanoid.Contrats.csproj">
+      <Project>{a276b467-ba34-4668-b2d7-2c0c267f16a2}</Project>
+      <Name>Arcanoid.Contrats</Name>
+    </ProjectReference>
+    <ProjectReference Include="Arcanoid.Manager\Arcanoid.Manager.csproj">
+      <Project>{8c9b1a17-f04f-4072-a4b4-2508f94255f2}</Project>
+      <Name>Arcanoid.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="Arcanoid.Storage\Arcanoid.Storage.csproj">
+      <Project>{e61c0a13-5832-4140-a280-92b8c17b481f}</Project>
+      <Name>Arcanoid.Storage</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Arcanoid.Manager;
+using Arcanoid.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,9 @@ namespace Arcanoid
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ArcaniodForm());
+            var storedg = new GameStorage();
+            var manedger = new GameManager(storedg);
+            Application.Run(new ArcaniodForm(manedger));
         }
     }
 }
