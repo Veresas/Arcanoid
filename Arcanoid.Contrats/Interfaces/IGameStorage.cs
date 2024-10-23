@@ -1,16 +1,16 @@
-﻿using Arcanoid.Contrats.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arcanoid.Contrats.Interfaces
+﻿namespace Arcanoid.Contrats.Interfaces
 {
     public interface IGameStorage
     {
+        /// <summary>
+        /// Движение платформы игрока в определенном направлении
+        /// </summary>
+        /// <param name="i"></param>
         void MovePLayer(int i);
+
+        /// <summary>
+        /// ОБновлении информации о положении шарика
+        /// </summary>
         void MoveBall();
     }
 }

@@ -79,9 +79,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="Arcanoid.Contrats\Arcanoid.Contrats.csproj">
       <Project>{a276b467-ba34-4668-b2d7-2c0c267f16a2}</Project>

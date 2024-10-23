@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arcanoid.Contrats.Models
+﻿namespace Arcanoid.Contrats.Models
 {
+    /// <summary>
+    /// Все напривления движения сущностей
+    /// </summary>
     public enum Direction
     {
         Up = 1,

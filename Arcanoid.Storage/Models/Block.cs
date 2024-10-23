@@ -1,21 +1,31 @@
 ﻿using Arcanoid.Contrats.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Arcanoid.Storage.Models
 {
+    /// <summary>
+    /// Представление блока
+    /// </summary>
     public class Block : Entites
     {
-        public int Id { get; set; }
+        /// <summary>
+        /// Длина блока
+        /// </summary>
         public int Lenght { get; protected set; }
+
+        /// <summary>
+        /// Высота блока
+        /// </summary>
         public int Height { get; protected set; }
-        public Block(int id,Vector vector, int linght, int widht) 
-        {
-            Id = id;
+
+        /// <summary>
+        /// Заполнение всех переменных при создании, и создание хитбокса
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <param name="linght"></param>
+        /// <param name="widht"></param>
+        public Block(Vector vector, int linght, int widht)
+        { 
             Position = vector;
             Lenght = linght;
             Height = widht;

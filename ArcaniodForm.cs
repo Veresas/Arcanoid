@@ -1,22 +1,24 @@
 ﻿using Arcanoid.Contrats.Models;
 using Arcanoid.Manager;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Arcanoid
 {
+    /// <summary>
+    /// Окно вывода изображения игры
+    /// </summary>
     public partial class ArcaniodForm : Form
     {
         private GameManager gameManager;
         private Graphics g;
         private Timer gameTimer;
+
+        /// <summary>
+        /// Принимает управляющий класс, инициализурет таймер
+        /// </summary>
+        /// <param name="gameManager"></param>
         public ArcaniodForm(GameManager gameManager)
         {
             this.gameManager = gameManager;

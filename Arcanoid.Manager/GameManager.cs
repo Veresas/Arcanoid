@@ -1,26 +1,30 @@
 ﻿using Arcanoid.Contrats;
-using Arcanoid.Contrats.Interfaces;
 using Arcanoid.Contrats.Models;
 using Arcanoid.Manager.Properties;
 using Arcanoid.Storage;
-using Arcanoid.Storage.Models;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Arcanoid.Manager
 {
+    /// <summary>
+    /// Управление логикой игры
+    /// </summary>
     public class GameManager : IGameManedger
     {
         GameStorage gameStorage;
+
+        /// <summary>
+        /// Конструктор, принимающий объект хранилища
+        /// </summary>
+        /// <param name="gameStorage"></param>
         public GameManager(GameStorage gameStorage)
         {
             this.gameStorage = gameStorage;
         }
+
+        /// <inheritdoc cref="IGameManedger"/>
         public bool CheakCollision()
         {
             UpdateHitbox();
@@ -65,6 +69,7 @@ namespace Arcanoid.Manager
             return true;
         }
 
+        /// <inheritdoc cref="IGameManedger"/>
         public Bitmap Draw()
         {
             var newImg = new Bitmap(Constants.WidowsWidht, Constants.WidowsHeight);
@@ -87,6 +92,7 @@ namespace Arcanoid.Manager
             return newImg;
         }
 
+        /// <inheritdoc cref="IGameManedger"/>
         public void Move()
         {
             
@@ -102,6 +108,10 @@ namespace Arcanoid.Manager
             
         }
 
+        /// <summary>
+        /// Изменение напрвление движения платформы игрока
+        /// </summary>
+        /// <param name="direction"></param>
         public void ChangeDiractionPlyer(Direction direction)
         {
             gameStorage.player.HorizontalDirection = direction;
@@ -115,6 +125,10 @@ namespace Arcanoid.Manager
             b.Bounds = new Rectangle((int)b.Position.X,(int)b.Position.Y, b.Size, b.Size);
         }
 
+        /// <summary>
+        /// Проверка условия победы
+        /// </summary>
+        /// <returns>true - победа</returns>
         public bool IsWin()
         {
             foreach (var blok in gameStorage.blocks)

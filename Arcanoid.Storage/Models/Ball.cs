@@ -1,22 +1,30 @@
 ﻿using Arcanoid.Contrats.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Drawing;
 
 namespace Arcanoid.Storage.Models
 {
+    /// <summary>
+    /// Представление снаряда
+    /// </summary>
     public class Ball : Entites
     {
-        public float Speed { get; protected set; }
+        /// <summary>
+        /// Размер шара
+        /// </summary>
         public int Size { get; protected set; }
+
+        /// <summary>
+        /// Вектор движения снаряда
+        /// </summary>
         public Vector MoveVector { get; set; } = new Vector(-1,-1);
-        public Ball(int speed, int size, Vector pos)
+
+        /// <summary>
+        /// Заполнение всех полей
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="pos"></param>
+        public Ball(int size, Vector pos)
         {
-            Speed = speed;
             Size = size;
             Position = pos;
         }
