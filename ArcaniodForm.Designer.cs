@@ -1,6 +1,6 @@
 ﻿namespace Arcanoid
 {
-    partial class Form1
+    partial class ArcaniodForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // ArcaniodForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Name = "ArcaniodForm";
+            this.Text = "Arcanoid";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ArcaniodForm_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ArcaniodForm_KeyUp);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
