@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcanoid", "Arcanoid.csproj", "{313CD154-B4F2-4EE9-812F-1C19ACDBBD4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcanoid.Contrats", "..\Arcanoid.Contrats\Arcanoid.Contrats.csproj", "{A276B467-BA34-4668-B2D7-2C0C267F16A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcanoid.Contrats", "Arcanoid.Contrats\Arcanoid.Contrats.csproj", "{A276B467-BA34-4668-B2D7-2C0C267F16A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcanoid.Manager", "..\Arcanoid.Manager\Arcanoid.Manager.csproj", "{8C9B1A17-F04F-4072-A4B4-2508F94255F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcanoid.Manager", "Arcanoid.Manager\Arcanoid.Manager.csproj", "{8C9B1A17-F04F-4072-A4B4-2508F94255F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcanoid.Storage", "..\Arcanoid.Storage\Arcanoid.Storage.csproj", "{E61C0A13-5832-4140-A280-92B8C17B481F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcanoid.Storage", "Arcanoid.Storage\Arcanoid.Storage.csproj", "{E61C0A13-5832-4140-A280-92B8C17B481F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
