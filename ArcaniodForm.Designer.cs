@@ -1,6 +1,6 @@
 ﻿namespace Arcanoid
 {
-    partial class Form1
+    partial class ArcaniodForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.

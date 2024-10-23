@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Arcanoid
 {
-    public partial class Form1 : Form
+    public partial class ArcaniodForm : Form
     {
-        public Form1()
+        public ArcaniodForm()
         {
             InitializeComponent();
         }
