@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Arcanoid.Contrats.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +12,5 @@ namespace Arcanoid.Contrats.Interfaces
     {
         void MovePLayer(int i);
         void MoveBall();
-        void Delet(int x, int y);
     }
 }

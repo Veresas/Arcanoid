@@ -12,7 +12,7 @@ namespace Arcanoid.Storage
 {
     public class GameStorage : IGameStorage
     {
-        public Block[,] blocks {  get; private set; }
+        public List<Block> blocks {  get; private set; }
         public Player player { get; private set; }
         public Ball ball { get; private set; }
 
@@ -30,7 +30,8 @@ namespace Arcanoid.Storage
 
         public void CreatBlocks()
         {
-            blocks = new Block[Constants.CountBlokcInColumn, Constants.CountBlokcInRow];
+            blocks = new List<Block>();
+
             var posX = Constants.BlockIndentation;
             var hight = Constants.HeightBlocks;
             var id = 0;
@@ -38,9 +39,8 @@ namespace Arcanoid.Storage
             {
                 for (int j = 0; j < Constants.CountBlokcInRow; j++)
                 {
-                    blocks[i, j] = 
-                        new Block(id++, new Vector(posX, hight),
-                        Constants.LenghtBlocks, Constants.HeightBlocks);
+                    blocks.Add(new Block(id++, new Vector(posX, hight),
+                        Constants.LenghtBlocks, Constants.HeightBlocks));
                     posX += Constants.LenghtBlocks;
                 }
                 posX = Constants.BlockIndentation;
@@ -48,9 +48,9 @@ namespace Arcanoid.Storage
             }
         }
 
-        public void Delet(int x, int y)
+        public void Delet(Block block)
         {
-            blocks[x, y] = null;
+            blocks.Remove(block);
         }
 
         public void MovePLayer(int i)

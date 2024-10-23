@@ -3,6 +3,7 @@ using Arcanoid.Contrats.Interfaces;
 using Arcanoid.Contrats.Models;
 using Arcanoid.Manager.Properties;
 using Arcanoid.Storage;
+using Arcanoid.Storage.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -48,18 +49,15 @@ namespace Arcanoid.Manager
                 return false;
             }
             
-            for (int i = 0; i < Constants.CountBlokcInColumn; i++)
+            foreach (var s in gameStorage.blocks)
             {
-                for (int j = 0; j < Constants.CountBlokcInRow; j++)
+                if (s != null)
                 {
-                    if (gameStorage.blocks[i,j] != null)
+                    if (b.Bounds.IntersectsWith(s.Bounds))
                     {
-                        if (b.Bounds.IntersectsWith(gameStorage.blocks[i,j].Bounds))
-                        {
-                            b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
-                            gameStorage.Delet(i,j);
-                            return true;
-                        }
+                        b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
+                        gameStorage.Delet(s);
+                        return true;
                     }
                 }
             }
