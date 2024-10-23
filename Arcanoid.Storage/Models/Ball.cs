@@ -16,7 +16,7 @@ namespace Arcanoid.Storage.Models
         /// <summary>
         /// Вектор движения снаряда
         /// </summary>
-        public Vector MoveVector { get; set; } = new Vector(-1,-1);
+        public Vector MoveVector { get; set; } = new Vector(-1, -1);
 
         /// <summary>
         /// Заполнение всех полей

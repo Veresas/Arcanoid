@@ -29,19 +29,19 @@ namespace Arcanoid.Manager
         {
             UpdateHitbox();
 
-            var b = gameStorage.ball;
-            var pl = gameStorage.player;
+            var b = gameStorage.Ball;
+            var pl = gameStorage.Player;
             if (b.Bounds.Left < 0 || b.Bounds.Right > Constants.WidowsWidht)
             {
                 b.MoveVector = new Vector(b.MoveVector.X * -1, b.MoveVector.Y);
             }
-            
-            if(b.Position.Y < 0)
+
+            if (b.Position.Y < 0)
             {
                 b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
             }
 
-            if (b.Bounds.IntersectsWith(gameStorage.player.Bounds))
+            if (b.Bounds.IntersectsWith(gameStorage.Player.Bounds))
             {
                 b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
                 b.Position = new Vector(b.Position.X, b.Position.Y - 10);
@@ -52,8 +52,8 @@ namespace Arcanoid.Manager
                 b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
                 return false;
             }
-            
-            foreach (var s in gameStorage.blocks)
+
+            foreach (var s in gameStorage.Blocks)
             {
                 if (s != null)
                 {
@@ -75,7 +75,7 @@ namespace Arcanoid.Manager
             var newImg = new Bitmap(Constants.WidowsWidht, Constants.WidowsHeight);
             var gr = Graphics.FromImage(newImg);
             gr.Clear(Color.Green);
-            foreach (var s in gameStorage.blocks)
+            foreach (var s in gameStorage.Blocks)
             {
                 if (s != null)
                 {
@@ -84,10 +84,10 @@ namespace Arcanoid.Manager
                 }
             }
 
-            gr.DrawImage(Resources.player, new Rectangle(Convert.ToInt32(gameStorage.player.Position.X), Convert.ToInt32(gameStorage.player.Position.Y),
-                gameStorage.player.Lenght, gameStorage.player.Height));
-            gr.FillEllipse(Brushes.Blue, new Rectangle(Convert.ToInt32(gameStorage.ball.Position.X), Convert.ToInt32(gameStorage.ball.Position.Y),
-                gameStorage.ball.Size, gameStorage.ball.Size));
+            gr.DrawImage(Resources.player, new Rectangle(Convert.ToInt32(gameStorage.Player.Position.X), Convert.ToInt32(gameStorage.Player.Position.Y),
+                gameStorage.Player.Lenght, gameStorage.Player.Height));
+            gr.FillEllipse(Brushes.Blue, new Rectangle(Convert.ToInt32(gameStorage.Ball.Position.X), Convert.ToInt32(gameStorage.Ball.Position.Y),
+                gameStorage.Ball.Size, gameStorage.Ball.Size));
 
             return newImg;
         }
@@ -95,17 +95,17 @@ namespace Arcanoid.Manager
         /// <inheritdoc cref="IGameManedger"/>
         public void Move()
         {
-            
-            if (gameStorage.player.HorizontalDirection == Direction.Right)
+            if (gameStorage.Player.HorizontalDirection == Direction.Right)
             {
                 gameStorage.MovePLayer(Constants.SpeedPlyer);
-            } else if (gameStorage.player.HorizontalDirection == Direction.Left){
+            }
+            else if (gameStorage.Player.HorizontalDirection == Direction.Left)
+            {
 
                 gameStorage.MovePLayer(Constants.SpeedPlyer * -1);
             }
 
             gameStorage.MoveBall();
-            
         }
 
         /// <summary>
@@ -114,15 +114,15 @@ namespace Arcanoid.Manager
         /// <param name="direction"></param>
         public void ChangeDiractionPlyer(Direction direction)
         {
-            gameStorage.player.HorizontalDirection = direction;
+            gameStorage.Player.HorizontalDirection = direction;
         }
 
         private void UpdateHitbox()
         {
-            var pl = gameStorage.player;
-            var b = gameStorage.ball;
+            var pl = gameStorage.Player;
+            var b = gameStorage.Ball;
             pl.Bounds = new Rectangle((int)pl.Position.X, (int)pl.Position.Y, pl.Lenght, pl.Height);
-            b.Bounds = new Rectangle((int)b.Position.X,(int)b.Position.Y, b.Size, b.Size);
+            b.Bounds = new Rectangle((int)b.Position.X, (int)b.Position.Y, b.Size, b.Size);
         }
 
         /// <summary>
@@ -131,9 +131,9 @@ namespace Arcanoid.Manager
         /// <returns>true - победа</returns>
         public bool IsWin()
         {
-            foreach (var blok in gameStorage.blocks)
+            foreach (var blok in gameStorage.Blocks)
             {
-                if(blok != null)
+                if (blok != null)
                 {
                     return false;
                 }

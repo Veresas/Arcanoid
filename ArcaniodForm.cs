@@ -23,11 +23,11 @@ namespace Arcanoid
         {
             this.gameManager = gameManager;
             InitializeComponent();
-            this.Width = Constants.WidowsWidht;
-            this.Height = Constants.WidowsHeight;
+            Width = Constants.WidowsWidht;
+            Height = Constants.WidowsHeight;
             g = CreateGraphics();
 
-           InitTimer();
+            InitTimer();
         }
 
         private void InitTimer()
@@ -40,19 +40,19 @@ namespace Arcanoid
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
-            g.DrawImage(gameManager.Draw(), 0,0);
+            g.DrawImage(gameManager.Draw(), 0, 0);
             gameManager.Move();
             if (!gameManager.CheakCollision())
             {
                 gameTimer.Stop();
                 MessageBox.Show("Вы проиграли");
-                this.Close();
+                Close();
             }
             if (gameManager.IsWin())
             {
                 gameTimer.Stop();
                 MessageBox.Show("Вы победили");
-                this.Close();
+                Close();
             }
         }
 
@@ -62,7 +62,7 @@ namespace Arcanoid
             {
                 gameManager.ChangeDiractionPlyer(Direction.Left);
             }
-            if(e.KeyCode == Keys.D)
+            if (e.KeyCode == Keys.D)
             {
                 gameManager.ChangeDiractionPlyer(Direction.Right);
             }

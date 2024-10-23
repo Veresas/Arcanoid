@@ -14,12 +14,11 @@ namespace Arcanoid.Contrats
         /// </summary>
         /// <returns>false - столкновение с полом, true - в остальных случаях</returns>
         bool CheakCollision();
-        
+
         /// <summary>
         /// Отрисовка кадров
         /// </summary>
         /// <returns></returns>
         Bitmap Draw();
-
     }
 }

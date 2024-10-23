@@ -25,7 +25,7 @@ namespace Arcanoid.Storage.Models
         /// <param name="linght"></param>
         /// <param name="widht"></param>
         public Block(Vector vector, int linght, int widht)
-        { 
+        {
             Position = vector;
             Lenght = linght;
             Height = widht;
