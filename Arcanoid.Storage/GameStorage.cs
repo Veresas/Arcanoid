@@ -25,20 +25,21 @@ namespace Arcanoid.Storage
             ball = new Ball(Constants.SpeedBall, Constants.SizeBall, 
                 new Vector(Constants.WidowsWidht / 2, Constants.WidowsHeight - 300));
 
-            CreatBlocks(3, 5);
+            CreatBlocks();
         }
 
-        public void CreatBlocks(int x, int y)
+        public void CreatBlocks()
         {
-            blocks = new Block[x, y];
+            blocks = new Block[Constants.CountBlokcInColumn, Constants.CountBlokcInRow];
             var posX = Constants.BlockIndentation;
             var hight = Constants.HeightBlocks;
-            for (int i = 0; i < x; i++)
+            var id = 0;
+            for (int i = 0; i < Constants.CountBlokcInColumn; i++)
             {
-                for (int j = 0; j < y; j++)
+                for (int j = 0; j < Constants.CountBlokcInRow; j++)
                 {
                     blocks[i, j] = 
-                        new Block(new Vector(posX, hight),
+                        new Block(id++, new Vector(posX, hight),
                         Constants.LenghtBlocks, Constants.HeightBlocks);
                     posX += Constants.LenghtBlocks;
                 }
@@ -47,9 +48,9 @@ namespace Arcanoid.Storage
             }
         }
 
-        public void Delet(int a, int b)
+        public void Delet(int x, int y)
         {
-            blocks[a, b] = null;
+            blocks[x, y] = null;
         }
 
         public void MovePLayer(int i)

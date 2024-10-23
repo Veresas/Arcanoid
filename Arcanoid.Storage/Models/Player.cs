@@ -17,10 +17,10 @@ namespace Arcanoid.Storage.Models
         public int Lenght { get; private set; }
         public int Height { get; private set; }
 
-        public Player(int linght, int widht, Vector pos, int speed)
+        public Player(int linght, int height, Vector pos, int speed)
         {
             Lenght = linght;
-            Height = widht;
+            Height = height;
             Position = pos;
             Speed = speed;
         }

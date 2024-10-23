@@ -9,25 +9,62 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Arcanoid.Manager
 {
     public class GameManager : IGameManedger
     {
         GameStorage gameStorage;
-
         public GameManager(GameStorage gameStorage)
         {
             this.gameStorage = gameStorage;
         }
-        public void CheakCollision()
+        public bool CheakCollision()
         {
-            throw new NotImplementedException();
-        }
+            UpdateHitbox();
 
-        public void CreatBlocks(int x, int y)
-        {
-            gameStorage.CreatBlocks(x, y);
+            var b = gameStorage.ball;
+            var pl = gameStorage.player;
+            if (b.Bounds.Left < 0 || b.Bounds.Right > Constants.WidowsWidht)
+            {
+                b.MoveVector = new Vector(b.MoveVector.X * -1, b.MoveVector.Y);
+            }
+            
+            if(b.Position.Y < 0)
+            {
+                b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
+            }
+
+            if (b.Bounds.IntersectsWith(gameStorage.player.Bounds))
+            {
+                b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
+                b.Position = new Vector(b.Position.X, b.Position.Y - 10);
+            }
+
+            if (b.Position.Y > Constants.WidowsHeight)
+            {
+                b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
+                return false;
+            }
+            
+            for (int i = 0; i < Constants.CountBlokcInColumn; i++)
+            {
+                for (int j = 0; j < Constants.CountBlokcInRow; j++)
+                {
+                    if (gameStorage.blocks[i,j] != null)
+                    {
+                        if (b.Bounds.IntersectsWith(gameStorage.blocks[i,j].Bounds))
+                        {
+                            b.MoveVector = new Vector(b.MoveVector.X, b.MoveVector.Y * -1);
+                            gameStorage.Delet(i,j);
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
 
         public Bitmap Draw()
@@ -37,7 +74,11 @@ namespace Arcanoid.Manager
             gr.Clear(Color.Green);
             foreach (var s in gameStorage.blocks)
             {
-                gr.DrawImage(Resources.block, new Rectangle(Convert.ToInt32(s.Position.X), Convert.ToInt32(s.Position.Y), s.Lenght, s.Height));
+                if (s != null)
+                {
+                    gr.DrawImage(Resources.block, new Rectangle(Convert.ToInt32(s.Position.X), Convert.ToInt32(s.Position.Y), s.Lenght, s.Height));
+
+                }
             }
 
             gr.DrawImage(Resources.player, new Rectangle(Convert.ToInt32(gameStorage.player.Position.X), Convert.ToInt32(gameStorage.player.Position.Y),
@@ -61,6 +102,31 @@ namespace Arcanoid.Manager
 
             gameStorage.MoveBall();
             
+        }
+
+        public void ChangeDiractionPlyer(Direction direction)
+        {
+            gameStorage.player.HorizontalDirection = direction;
+        }
+
+        private void UpdateHitbox()
+        {
+            var pl = gameStorage.player;
+            var b = gameStorage.ball;
+            pl.Bounds = new Rectangle((int)pl.Position.X, (int)pl.Position.Y, pl.Lenght, pl.Height);
+            b.Bounds = new Rectangle((int)b.Position.X,(int)b.Position.Y, b.Size, b.Size);
+        }
+
+        public bool IsWin()
+        {
+            foreach (var blok in gameStorage.blocks)
+            {
+                if(blok != null)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

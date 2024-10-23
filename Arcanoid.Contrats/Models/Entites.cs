@@ -15,6 +15,6 @@ namespace Arcanoid.Contrats.Models
     public abstract class Entites
     {
         public Vector Position { get; set; }
-        
+        public Rectangle Bounds { get; set; }
     }
 }

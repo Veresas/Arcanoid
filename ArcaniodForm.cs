@@ -38,8 +38,37 @@ namespace Arcanoid
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
-           g.DrawImage(gameManager.Draw(), 0,0);
+            g.DrawImage(gameManager.Draw(), 0,0);
+            gameManager.Move();
+            if (!gameManager.CheakCollision())
+            {
+                gameTimer.Stop();
+                MessageBox.Show("Вы проиграли");
+                this.Close();
+            }
+            if (gameManager.IsWin())
+            {
+                gameTimer.Stop();
+                MessageBox.Show("Вы победили");
+                this.Close();
+            }
         }
 
+        private void ArcaniodForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A)
+            {
+                gameManager.ChangeDiractionPlyer(Direction.Left);
+            }
+            if(e.KeyCode == Keys.D)
+            {
+                gameManager.ChangeDiractionPlyer(Direction.Right);
+            }
+        }
+
+        private void ArcaniodForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            gameManager.ChangeDiractionPlyer(Direction.InPlace);
+        }
     }
 }

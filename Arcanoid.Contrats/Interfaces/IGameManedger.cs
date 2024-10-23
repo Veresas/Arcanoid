@@ -10,8 +10,7 @@ namespace Arcanoid.Contrats
     public interface IGameManedger
     {
         void Move();
-        void CreatBlocks(int x, int y);
-        void CheakCollision();
+        bool CheakCollision();
         Bitmap Draw();
 
     }

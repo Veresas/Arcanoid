@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Drawing;
 
 namespace Arcanoid.Storage.Models
 {
@@ -12,7 +13,7 @@ namespace Arcanoid.Storage.Models
     {
         public float Speed { get; protected set; }
         public int Size { get; protected set; }
-        public Vector MoveVector { get; set; }
+        public Vector MoveVector { get; set; } = new Vector(-1,-1);
         public Ball(int speed, int size, Vector pos)
         {
             Speed = speed;

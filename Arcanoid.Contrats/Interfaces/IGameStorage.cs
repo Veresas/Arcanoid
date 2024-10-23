@@ -10,7 +10,6 @@ namespace Arcanoid.Contrats.Interfaces
     {
         void MovePLayer(int i);
         void MoveBall();
-        void Delet(int a, int b);
-        void CreatBlocks(int x,int y);
+        void Delet(int x, int y);
     }
 }
